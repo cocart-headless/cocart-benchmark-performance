@@ -61,6 +61,16 @@ function cocart_benchmark_performance( $plugins ) {
 	$accepted_plugins = apply_filters( 'cocart_benchmark_whitelist_plugins', $accepted_plugins );
 
 	/**
+	 * The list of plugins blacklisted from loading.
+	 * Even if whitelisted via the filter `cocart_benchmark_whitelist_plugins` it will be ignored.
+	 */
+	$blacklisted_plugins = array_flip(
+		array(
+			'elementor/elementor.php'
+		)
+	);
+
+	/**
 	 * Loop through the active plugins, if the plugin is whitelisted or is 
 	 * either a CoCart or WooCommerce extension, allow the plugin to be loaded.
 	 * Otherwise, remove it from the list of plugins to load to improve performance.
@@ -71,10 +81,24 @@ function cocart_benchmark_performance( $plugins ) {
 			false !== strpos( $plugin, 'woocommerce-' ) || 
 			isset( $accepted_plugins[ $plugin ] )
 		) {
+			/**
+			 * Even if plugin is accepted, if it's blacklisted then defiantly remove the plugin.
+			 */
+			if ( isset( $blacklisted_plugins[ $plugin ] ) ) {
+				unset( $plugins[ $key ] );
+			}
+
 			continue;
 		}
 
-		unset( $plugins[ $key ] );
+		/**
+		 * Defiantly remove the plugin if it's been blacklisted.
+		 */
+		if ( isset( $blacklisted_plugins[ $plugin ] ) ) {
+			unset( $plugins[ $key ] );
+		} else {
+			unset( $plugins[ $key ] );
+		}
 	}
 
 	return $plugins;
