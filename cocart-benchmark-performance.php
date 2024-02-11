@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: CoCart Benchmark Performance
- * Plugin URI:  https://cocart.xyz
+ * Plugin URI:  https://cocartapi.com
  * Description: Only whitelisted plugins will load when requesting CoCart to improve performance.
- * Author:      Sébastien Dumont
- * Author URI:  https://sebastiendumont.com
- * Version:     0.0.1
+ * Author:      CoCart Headless, LLC
+ * Author URI:  https://cocartapi.com
+ * Version:     0.0.2
  */
 
 add_filter( 'option_active_plugins', 'cocart_benchmark_performance' );
