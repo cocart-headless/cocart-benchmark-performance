@@ -14,14 +14,14 @@ function cocart_benchmark_performance( $plugins ) {
 	/**
 	 * Disable cronjobs for this request.
 	 */
-	if ( ! defined('DISABLE_WP_CRON' ) ) {
+	if ( ! defined( 'DISABLE_WP_CRON' ) ) {
 		define( 'DISABLE_WP_CRON', true );
 	}
 
 	/**
 	 * If we're not performing a REST API request, return early.
 	 */
-	if ( ! defined( 'REST_REQUEST' ) || ! REST_REQUEST ) {
+	if ( ! defined( 'REST_REQUEST' ) ) {
 		return $plugins;
 	}
 
