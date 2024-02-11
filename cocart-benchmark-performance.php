@@ -42,6 +42,7 @@ function cocart_benchmark_performance( $plugins ) {
 			'cart-rest-api-for-woocommerce/cart-rest-api-for-woocommerce.php',
 			'woocommerce/woocommerce.php',
 			'flexible-shipping-ups/flexible-shipping-ups.php',
+			'advanced-custom-fields/acf.php',
 			'advanced-custom-fields-pro/acf.php',
 			'amazon-s3-and-cloudfront/wordpress-s3.php',
 			'rest-api-head-tags/plugin.php',
