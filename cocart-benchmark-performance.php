@@ -55,6 +55,8 @@ function cocart_benchmark_performance( $plugins ) {
 
 	/**
 	 * Use this filter to allow other plugins to load.
+	 *
+	 * @param array $accepted_plugins
 	 */
 	$accepted_plugins = apply_filters( 'cocart_benchmark_whitelist_plugins', $accepted_plugins );
 
